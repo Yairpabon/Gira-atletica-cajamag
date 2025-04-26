@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Oficiales - Atletismo</title>
+    <link rel="stylesheet" href="CSS/CSS.CSS">
+    <link rel="stylesheet" href="../resultados/CSS/styles.css">
+  
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>LIGA DE ATLETISMO DEL MAGDALENA</h1>
+            </div>
+           
+            <div class="language-selector">
+                <button>Idioma</button>
+            </div>
+        </nav>
+        <div class="notification-banner">
+            ¡Clasificación oficial!
+        </div>
+        <div class="tabs">
+            <a href="../index.html" class="tad">INICIO</a>
+            <a href="#" class="tab active" data-tab="results">RESULTADOS</a>
+            <a href="#" class="tab" data-tab="participants">PARTICIPANTES</a>
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar por nombre o dorsal...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <main>
+       
+        <!-- Sección de Resultados -->
+        <section id="results-section" class="tab-content active">
+            <div class="category-header">
+                <div class="category-selector">
+                    <div class="dropdown">
+                        <button class="dropdown-btn">
+                            <h2>RESULTADOS <span id="current-category">GENERAL</span> <i class="fas fa-chevron-down"></i></h2>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" data-category="general">General</a>
+                            <a href="#" data-category="juvenil">Juvenil (13-17 años)</a>
+                            <a href="#" data-category="abierta">Abierta (18-45 años)</a>
+                            <a href="#" data-category="master">Máster (46+ años)</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-options">
+                    <div class="gender-filter">
+                        <button class="filter-btn active" data-gender="all">Todos</button>
+                        <button class="filter-btn" data-gender="F">Mujeres</button>
+                        <button class="filter-btn" data-gender="M">Hombres</button>
+                    </div>
+                </div>
+                <div class="export-options">
+                    <!-- <button class="export-btn" data-format="json" title="Exportar a JSON"><span>JSON</span></button>
+                    <button class="export-btn" data-format="csv" title="Exportar a CSV"><span>CSV</span></button>
+                    <button class="export-btn" data-format="xls" title="Exportar a Excel"><span>XLS</span></button> -->
+                   
+            </div>
+
+            <div class="classification-counter">
+                <div class="category-label">GENERAL</div>
+                <div class="counter"><span id="classified-count">0</span> / <span id="total-count">0</span> CLASIFICADOS</div>
+            </div>
+
+            
+
+            <div class="results-table-container">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th class="position-col"> Pl.</th>
+                            <th class="dorsal-col"> Dorsal</th>
+                            <th class="name-col"> Nombre</th>
+                            <th class="category-col"> Categoría</th>
+                            <th class="club-col">🏋️ Club</th>
+                            <th class="gender-col"> Sx</th>
+                            <th class="time-col">⏱ Tiempo</th>
+                            <th class="gap-col">➕ Gap</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body">
+                        <!-- Tabla generada dinámicamente con JavaScript -->
+                        <tr>
+                            <td colspan="8" class="loading-message">
+                                <div class="loading-container">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <p>Cargando resultados...</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="pagination-btn" id="prev-page" disabled><i class="fas fa-chevron-left"></i> Anterior</button>
+                <div class="page-indicator">Página <span id="current-page">1</span> de <span id="total-pages">1</span></div>
+                <button class="pagination-btn" id="next-page" disabled>Siguiente <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Sección de Participantes -->
+        <section id="participants-section" class="tab-content">
+            <div class="category-header">
+                <div class="category-selector">
+                    <div class="dropdown">
+                        <button class="dropdown-btn">
+                            <h2>PARTICIPANTES <span id="participants-current-category">GENERAL</span> <i class="fas fa-chevron-down"></i></h2>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" data-category="general">General</a>
+                            <a href="#" data-category="juvenil">Juvenil (13-17 años)</a>
+                            <a href="#" data-category="abierta">Abierta (18-45 años)</a>
+                            <a href="#" data-category="master">Máster (46+ años)</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-options">
+                    <div class="gender-filter">
+                        <button class="filter-btn active" data-gender="all">Todos</button>
+                        <button class="filter-btn" data-gender="F">Mujeres</button>
+                        <button class="filter-btn" data-gender="M">Hombres</button>
+                    </div>
+                </div>
+                <div class="export-options">
+                    <button class="export-btn" data-format="json" title="Exportar a JSON"><span>JSON</span></button>
+                    <button class="export-btn" data-format="csv" title="Exportar a CSV"><span>CSV</span></button>
+                    <button class="export-btn" data-format="xls" title="Exportar a Excel"><span>XLS</span></button>
+                </div>
+            </div>
+
+            <div class="participants-grid" id="participants-grid">
+                <!-- Participantes generados dinámicamente con JavaScript -->
+                <div class="loading-message">
+                    <div class="loading-container">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Cargando participantes...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="pagination-btn" id="participants-prev-page" disabled><i class="fas fa-chevron-left"></i> Anterior</button>
+                <div class="page-indicator">Página <span id="participants-current-page">1</span> de <span id="participants-total-pages">1</span></div>
+                <button class="pagination-btn" id="participants-next-page" disabled>Siguiente <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Sección de Galería -->
+        <section id="gallery-section" class="tab-content">
+            <div class="gallery-header">
+                <h2>GALERÍA DEL EVENTO</h2>
+                <div class="gallery-tabs">
+                    <button class="gallery-tab active" data-gallery="photos">Fotos</button>
+                    <button class="gallery-tab" data-gallery="videos">Videos</button>
+                </div>
+            </div>
+
+            <div class="gallery-container" id="photos-gallery">
+                <!-- Fotos generadas dinámicamente con JavaScript -->
+            </div>
+
+            <div class="gallery-container" id="videos-gallery" style="display: none;">
+                <!-- Videos generados dinámicamente con JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para detalles del competidor -->
+    <div class="modal" id="competitor-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <div class="competitor-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="competitor-info">
+                    <h2 id="modal-name">Nombre del Competidor</h2>
+                    <p>Dorsal: <span id="modal-dorsal">123</span></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-stopwatch"></i></div>
+                        <div class="stat-value" id="modal-time">00:00:00</div>
+                        <div class="stat-label">Tiempo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="stat-value" id="modal-position">0</div>
+                        <div class="stat-label">Posición</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-running"></i></div>
+                        <div class="stat-value" id="modal-pace">0:00 min/km</div>
+                        <div class="stat-label">Ritmo</div>
+                    </div>
+                </div>
+                <div class="details-container">
+                    <div class="detail-row">
+                        <div class="detail-label">Categoría:</div>
+                        <div class="detail-value" id="modal-category">Senior Femenino</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Club:</div>
+                        <div class="detail-value" id="modal-club">Nombre del Club</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Edad:</div>
+                        <div class="detail-value" id="modal-age">30</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Ciudad:</div>
+                        <div class="detail-value" id="modal-city">Ciudad</div>
+                    </div>
+                </div>
+                <div class="certificate-container">
+                    <button id="download-certificate" class="certificate-btn">
+                        <i class="fas fa-certificate"></i> Descargar Certificado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/results-script.js"></script>
+    
+</body>
+</html>
