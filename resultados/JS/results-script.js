@@ -615,6 +615,7 @@ function displayParticipants(page) {
         e.stopPropagation() // Evitar que se propague al card
         openCompetitorModal(participant)
       })
+      
 
       footer.appendChild(viewDetailsBtn)
 
@@ -649,13 +650,15 @@ function openCompetitorModal(competitor) {
   document.getElementById("modal-age").textContent = competitor.age || "No especificado"
   document.getElementById("modal-city").textContent = competitor.city || "No especificado"
 
-  // Calcular ritmo (ejemplo: 5:30 min/km)
-  const timeParts = competitor.time.split(":")
-  const totalMinutes = Number.parseInt(timeParts[0]) * 60 + Number.parseInt(timeParts[1])
-  const pace = (totalMinutes / 21.1).toFixed(2) // Asumiendo media maratón (21.1 km)
-  const paceMinutes = Math.floor(pace)
-  const paceSeconds = Math.round((pace - paceMinutes) * 60)
-  document.getElementById("modal-pace").textContent = `${paceMinutes}:${paceSeconds.toString().padStart(2, "0")} min/km`
+  // Calcular ritmo min/km)
+  const timeParts = competitor.time.split(':').map(Number);
+  const totalSeconds = timeParts[0] * 60 + timeParts[1];
+  const pace = totalSeconds / 3.7; // Ritmo en segundos por kilómetro
+  const paceMinutes = Math.floor(pace / 60);
+  const paceSeconds = Math.round(pace % 60);
+  const paceFormatted = `${paceMinutes}:${paceSeconds < 10 ? '0' : ''}${paceSeconds}`;
+  document.getElementById('modal-pace').textContent = paceFormatted;
+  
 
   // Mostrar el modal
   modal.style.display = "block"

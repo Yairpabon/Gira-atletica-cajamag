@@ -674,7 +674,7 @@ header {
 }
 
 .search-btn {
-  background-color: black;
+  background-color: ;
   color: white;
   border: none;
   padding: 0.8rem 1.8rem;
@@ -684,7 +684,7 @@ header {
 }
 
 .search-btn:hover {
-  background-color: #0055aa;
+  background-color: ;
 }
 
 /* Responsive */
@@ -723,7 +723,7 @@ header {
   }
 
   .search-container {
-    margin: 0.5rem 0;
+    margin:6rem;
     width: 100%;
   }
 
